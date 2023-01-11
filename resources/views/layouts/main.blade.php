@@ -22,6 +22,8 @@
 
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
     <!-- CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -49,7 +51,7 @@
 
     <!--   Core JS Files   -->
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <script src="{{ asset('js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
     <script src="{{ asset('js/core/bootstrap-material-design.min.js') }}"></script>

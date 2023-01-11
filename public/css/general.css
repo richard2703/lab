@@ -482,3 +482,9 @@ p.botonTitulos{
 .combustiblePestaña.active{
   border: none;
 }
+
+.btnSinFondo{
+  background-color: #fff;
+  border: none;
+  color: red;
+}

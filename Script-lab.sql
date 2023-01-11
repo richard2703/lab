@@ -494,3 +494,12 @@ CREATE TABLE residente(
  );
 
 alter table obramaqper add combustible int DEFAULT 0;
+
+CREATE TABLE parametros(
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  nombre varchar(255) NOT NULL,
+  alto float(10,2) null null,
+  bajo float(10,2) null,
+  PRIMARY KEY (id)
+ );
+
