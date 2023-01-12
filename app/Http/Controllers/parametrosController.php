@@ -28,19 +28,13 @@ class parametrosController extends Controller
         $data = $request->only('nombre', 'bajo', 'alto');
         $parametro->update($data);
         Session::flash('message', 1);
-        return redirect()->back();
+        return redirect()->action([parametrosController::class, 'index']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\parametros  $parametros
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(parametros $parametro)
     {
         $parametro->delete();
         Session::flash('message', 2);
-        return redirect()->back();
+        return redirect()->action([parametrosController::class, 'index']);
     }
 }

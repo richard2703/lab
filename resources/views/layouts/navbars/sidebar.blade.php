@@ -238,7 +238,7 @@
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                             <a
-                                href="{{ route('obras.index') }}"class="nav-link -item{{ $activePage == 'obra' ? ' active' : '' }} ">
+                                href="{{ route('examenes.index') }}"class="nav-link -item{{ $activePage == 'obra' ? ' active' : '' }} ">
                                 <span class="sidebar-normal py-2 ps-5">{{ __('Examenes') }} </span>
                             </a>
                         </li>

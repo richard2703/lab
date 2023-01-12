@@ -64,7 +64,7 @@
                                                             @endcan
                                                             @can('user_destroy')
                                                                 <form class="alertaBorrar"
-                                                                    action="{{ route('parametros.delete', $parametro->id) }}"
+                                                                    action="{{ route('parametros.destroy', $parametro->id) }}"
                                                                     method="POST" style="display: inline-block;">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -154,7 +154,7 @@
             <div class="modal-content">
                 <div class="col-12">
                     <div class="card ">
-                        <form action="{{ route('parametros.update', 1) }}" method="post">
+                        <form action="{{ route('parametros.update', 1) }}" method="post" id="update">
                             @csrf
                             @method('put')
                             <div class="card-header bacTituloPrincipal ">
@@ -237,6 +237,9 @@
         function cargar(id, nombre, baja, alta) {
             const parametroid = document.getElementById('id');
             parametroid.value = id;
+            var url = '{{url("")}}/parametros/'+id;
+            const ruta = document.getElementById('update');
+            ruta.action = url;
             const parametronombre = document.getElementById('nombreU');
             parametronombre.value = nombre;
             const parametrobajo = document.getElementById('bajoU');

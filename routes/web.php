@@ -159,8 +159,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/inventario/combustible/descarga', [App\Http\Controllers\inventarioController::class, 'descargaCombustible'])->name('inventario.descargaCombustible');
 
     //Crud parametros
-    Route::get('/parametros', [App\Http\Controllers\parametrosController::class, 'index'])->name('parametros.index');
-    Route::post('/parametros', [App\Http\Controllers\parametrosController::class, 'store'])->name('parametros.store');
-    Route::put('/parametros/{parametro}', [App\Http\Controllers\parametrosController::class, 'update'])->name('parametros.update');
-    Route::delete('/parametros/{parametro}', [App\Http\Controllers\parametrosController::class, 'destroy'])->name('parametros.delete');
+    Route::resource('parametros', App\Http\Controllers\parametrosController::class);
+
+    // Route::get('/parametros', [App\Http\Controllers\parametrosController::class, 'index'])->name('parametros.index');
+    // Route::post('/parametros', [App\Http\Controllers\parametrosController::class, 'store'])->name('parametros.store');
+    // Route::put('/parametros/{parametro}', [App\Http\Controllers\parametrosController::class, 'update'])->name('parametros.update');
+    // Route::delete('/parametros/{parametro}', [App\Http\Controllers\parametrosController::class, 'destroy'])->name('parametros.delete');
+
+    Route::resource('examenes', App\Http\Controllers\examenesController::class);
 });
