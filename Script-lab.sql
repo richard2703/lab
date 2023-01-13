@@ -262,7 +262,7 @@ CREATE TABLE nomina(
 CREATE TABLE maquinaria(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NULL,
-  identificador varchar(8) NULL,
+  alter table maquinaria add identificador varchar(8) NULL,
   tipo varchar(255) NULL,
   categoria varchar(255) NULL,
   marca varchar(255) NULL,
@@ -508,5 +508,14 @@ CREATE TABLE examenes(
   nombre varchar(255) NOT NULL,
   costo float(10,2) null,
   PRIMARY KEY (id)
+ );
+
+CREATE TABLE examenParametro(
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  examenId bigint(20) unsigned NOT NULL,
+  parametroId bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_examenParametro_examenId foreign key (examenId) references examenes(id),
+  CONSTRAINT FK_examenParametro_parametroId foreign key (parametroId) references parametros(id)
  );
 

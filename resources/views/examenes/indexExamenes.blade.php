@@ -8,7 +8,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header bacTituloPrincipal">
-                                    <h4 class="card-title">Parametros</h4>
+                                    <h4 class="card-title">Examenes</h4>
                                     {{-- <p class="card-category">Usuarios registrados</p> --}}
                                 </div>
                                 <div class="card-body">
@@ -25,10 +25,13 @@
                                     <div class="row justify-content-end">
                                         <div class="col-2 text-center mb-5">
                                             {{-- @can('user_create') --}}
-                                            <button type="button" class="botonSinFondo " data-bs-toggle="modal"
-                                                data-bs-target="#modal-nuevo"><img
-                                                    style="width: 30px;"src="{{ '/img/inventario/nuevo.svg' }}"></button>
-                                            <p>Nuevo</p>
+                                            <a href="{{ route('examenes.create') }}">
+                                                <button type="button" class="botonSinFondo ">
+                                                    <img
+                                                        style="width: 30px;"src="{{ '/img/inventario/nuevo.svg' }}"></button>
+                                                <p>Nuevo</p>
+
+                                            </a>
 
                                             {{-- @endcan --}}
                                         </div>
