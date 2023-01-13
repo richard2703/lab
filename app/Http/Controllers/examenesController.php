@@ -6,8 +6,7 @@ use App\Models\examenes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\parametros;
-use App\Models\examenParametro;
-
+use Illuminate\Support\Facades\Session;
 
 
 class examenesController extends Controller
@@ -26,37 +25,39 @@ class examenesController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->input('parametros', []));
+        // $examen = examenes::find(1);
+
         $examen = examenes::create($request->only('nombre', 'costo'));
-        // $examen->parametros()->sync($request->input('parametros', []));
-
-        dd('store');
-
-        // $role = Role::create($request->only('name'));
-
-        // // $role->permissions()->sync($request->input('permissions', []));
-        // $role->syncPermissions($request->input('permissions', []));
-
-        // return redirect()->route('roles.index');
+        $examen->parametros()->sync($request->input('parametros', []));
+        Session::flash('message', 1);
+        return redirect()->action([examenesController::class, 'index']);
     }
 
     public function show(examenes $examenes)
     {
-        //
     }
 
-    public function edit(examenes $examenes)
+    public function edit(examenes $examene)
     {
-        //
+        $parametros = parametros::all()->pluck('nombre', 'id');
+        $examene->load('parametros');
+        return view('examenes.editExamenes', compact('parametros', 'examene'));
     }
 
-    public function update(Request $request, examenes $examenes)
+    public function update(Request $request, examenes $examene)
     {
-        //
+        $examene->update($request->only('nombre', 'costo'));
+        $examene->parametros()->sync($request->input('parametros', []));
+        Session::flash('message', 1);
+        $examenes = examenes::paginate(10);
+        return view('examenes.indexExamenes', compact('examenes'));
     }
 
-    public function destroy(examenes $examenes)
+    public function destroy(examenes $examene)
     {
-        //
+        $examene->delete();
+        Session::flash('message', 2);
+        $examenes = examenes::paginate(10);
+        return view('examenes.indexExamenes', compact('examenes'));
     }
 }

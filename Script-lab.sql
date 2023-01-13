@@ -508,14 +508,14 @@ CREATE TABLE examenes(
   nombre varchar(255) NOT NULL,
   costo float(10,2) null,
   PRIMARY KEY (id)
- );
+);
 
 CREATE TABLE examenParametro(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  examenId bigint(20) unsigned NOT NULL,
-  parametroId bigint(20) unsigned NOT NULL,
+  examenes_id bigint(20) unsigned NOT NULL,
+  parametros_id bigint(20) unsigned NOT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT FK_examenParametro_examenId foreign key (examenId) references examenes(id),
-  CONSTRAINT FK_examenParametro_parametroId foreign key (parametroId) references parametros(id)
+  CONSTRAINT FK_examenParametro_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
+  CONSTRAINT FK_examenParametro_parametroId foreign key (parametros_id) references parametros(id) on update cascade on delete cascade
  );
 

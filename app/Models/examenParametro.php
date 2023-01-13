@@ -13,6 +13,6 @@ class examenParametro extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'examenId', 'parametroId'
+        'examen_id', 'parametro_id'
     ];
 }

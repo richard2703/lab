@@ -58,6 +58,11 @@
                                                                     <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                             @endcan  --}}
                                                             @can('user_edit')
+                                                                <a href="{{ route('examenes.edit', $examen->id) }}">
+                                                                    <button class="botonSinFondo mx-2 " title="Editar"
+                                                                        type="button">
+                                                                        <i class="bi bi-pencil-fill "></i>
+                                                                    </button> </a>
                                                                 {{--  <button class="botonSinFondo mx-2 " title="Resurtir"
                                                                     type="button" data-bs-toggle="modal"
                                                                     data-bs-target="#modal-update"
@@ -66,8 +71,8 @@
                                                                 </button>  --}}
                                                             @endcan
                                                             @can('user_destroy')
-                                                                <form class="alertaBorrar"
-                                                                    action="{{ route('parametros.destroy', $examen->id) }}"
+                                                                <form class="alertaBorrar" <form class="alertaBorrar"
+                                                                    action="{{ route('examenes.destroy', $examen->id) }}"
                                                                     method="POST" style="display: inline-block;">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -75,6 +80,7 @@
                                                                         onclick="alertaBorrar()" rel="tooltip">
                                                                         <i class="bi bi-x-circle"></i>
                                                                     </button>
+                                                                </form>
                                                                 </form>
                                                             @endcan
                                                         </td>

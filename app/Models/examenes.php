@@ -15,4 +15,9 @@ class examenes extends Model
     protected $fillable = [
         'nombre', 'costo'
     ];
+
+    public function parametros()
+    {
+        return $this->belongsToMany(parametros::class, 'examenParametro');
+    }
 }
