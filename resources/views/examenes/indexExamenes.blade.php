@@ -67,7 +67,7 @@
                                                             @endcan
                                                             @can('user_destroy')
                                                                 <form class="alertaBorrar"
-                                                                    action="{{ route('parametros.delete', $examen->id) }}"
+                                                                    action="{{ route('parametros.destroy', $examen->id) }}"
                                                                     method="POST" style="display: inline-block;">
                                                                     @csrf
                                                                     @method('DELETE')
