@@ -500,6 +500,9 @@ CREATE TABLE parametros(
   nombre varchar(255) NOT NULL,
   alto float(10,2) null null,
   bajo float(10,2) null,
+  referencia varchar(255) null,
+  tipo varchar(255) null
+  medicion varchar(255),
   PRIMARY KEY (id)
  );
 
@@ -507,6 +510,7 @@ CREATE TABLE examenes(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NOT NULL,
   costo float(10,2) null,
+  maquila float(10,2) null,
   PRIMARY KEY (id)
 );
 
@@ -519,3 +523,58 @@ CREATE TABLE examenParametro(
   CONSTRAINT FK_examenParametro_parametroId foreign key (parametros_id) references parametros(id) on update cascade on delete cascade
  );
 
+CREATE TABLE pacientes (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    nacimiento DATE NOT NULL,
+    telefono VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE maquila (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    telefono VARCHAR(255)  NULL,
+    correo VARCHAR(255)  NULL,
+    encargado VARCHAR(255) NOT NULL,
+    telEncargado VARCHAR(255)  NULL,
+    foraneo float null,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE tickets(
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  paciente_id bigint(20) unsigned NOT NULL,
+  maquila_id bigint(20) unsigned NOT NULL,
+  total float default 0 ,
+  created_at datetime NULL,
+  updated_at datetime NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_tickets_examenId foreign key (paciente_id) references pacientes(id) on update cascade on delete cascade,
+  CONSTRAINT FK_tickets_maquilaId foreign key (maquila_id) references maquilas(id) on update cascade on delete cascade
+ );
+
+CREATE TABLE tomas(
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  examenes_id bigint(20) unsigned NOT NULL,
+  ticket_id bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_tomas_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
+  CONSTRAINT FK_tomas_ticketid foreign key (ticket_id) references tickets(id) on update cascade on delete cascade
+ );
+
+CREATE TABLE resultados(
+  id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  examenes_id bigint(20) unsigned NOT NULL,
+  ticket_id bigint(20) unsigned NOT NULL,
+  parametros_id bigint(20) unsigned NOT NULL,
+  resultado varchar(255) not null,
+  nota text null,
+  comentario text null,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_resultados_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
+  CONSTRAINT FK_resultados_ticketid foreign key (ticket_id) references tickets(id) on update cascade on delete cascade,
+  CONSTRAINT FK_resultados_parametroId foreign key (parametros_id) references parametros(id) on update cascade on delete cascade
+ );
