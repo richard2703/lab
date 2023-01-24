@@ -167,4 +167,5 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::delete('/parametros/{parametro}', [App\Http\Controllers\parametrosController::class, 'destroy'])->name('parametros.delete');
 
     Route::resource('examenes', App\Http\Controllers\examenesController::class);
+    Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
 });
