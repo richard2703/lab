@@ -233,6 +233,17 @@
                     {{--  <b class="caret"></b>  --}}
                 </a>
             </li>
+            <!------ pacientes ------>
+            <li
+                class="nav-item {{ $activePage == 'pacientes' || $activePage == 'user-management' ? ' active' : '' }}">
+                <a href="{{ route('pacientes.index') }}" onmouseover="cambiar3();" onmouseout="volver3();"
+                    class="nav-link -item{{ $activePage == 'maquilas' ? ' active' : '' }} ">
+                    <i><img id="cambiaBCO3" style="width:25px"
+                            src="{{ $activePage == 'inventario' ? ' img/navs/inventarioMenuBCO.svg' : '/img/navs/inventarioMenu.svg' }}"></i>
+                    <p> {{ __('Pacientes') }} </p>
+                    {{--  <b class="caret"></b>  --}}
+                </a>
+            </li>
 
             <!------ Examenes ------>
             <li class="nav-item {{ $activePage == 'Examenes' || $activePage == 'user-management' ? ' active' : '' }}">
