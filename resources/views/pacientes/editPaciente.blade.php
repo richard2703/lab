@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'maquilas', 'titlePage' => __('Maquilas')])
+@extends('layouts.main', ['activePage' => 'pacientes', 'titlePage' => __('Pacientes')])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -6,7 +6,7 @@
                 <div class="col-11 align-self-start">
                     <div class="card">
                         <div class="card-body contCart">
-                            <form class="row alertaGuardar" action="{{ route('maquilas.update', $maquila->id) }}"
+                            <form class="row alertaGuardar" action="{{ route('pacientes.update', $paciente->id) }}"
                                 method="post"class="row" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
@@ -33,44 +33,25 @@
                                             <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
                                                 <label class="labelTitulo">Nombre:</label></br>
                                                 <input type="text" class="inputCaja" id="nombre" name="nombre"
-                                                    value="{{ $maquila->nombre }}">
+                                                    value="{{ $paciente->nombre }}">
                                             </div>
 
                                             <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Direccion:</label></br>
-                                                <input type="text" class="inputCaja" id="direccion" name="direccion"
-                                                    value="{{ $maquila->direccion }}">
+                                                <label class="labelTitulo">Apellido:</label></br>
+                                                <input type="text" class="inputCaja" id="apellido" name="apellido"
+                                                    value="{{ $paciente->apellido }}">
                                             </div>
 
                                             <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
                                                 <label class="labelTitulo">Telefono:</label></br>
                                                 <input type="text" class="inputCaja" id="telefono" name="telefono"
-                                                    value="{{ $maquila->telefono }}">
-                                            </div>
-
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Correo:</label></br>
-                                                <input type="email" class="inputCaja" id="correo" name="correo"
-                                                    value="{{ $maquila->correo }}">
+                                                    value="{{ $paciente->telefono }}">
                                             </div>
 
                                             <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Encargado:</label></br>
-                                                <input type="text" class="inputCaja" id="encargado" name="encargado"
-                                                    value="{{ $maquila->encargado }}">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Telefono encargado:</label></br>
-                                                <input type="text" class="inputCaja" id="telEncargado"
-                                                    name="telEncargado" value="{{ $maquila->telEncargado }}">
-                                            </div>
-
-                                            <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                                <label class="labelTitulo">Foraneo:</label></br>
-                                                <input type="number" class="inputCaja" id="foraneo" name="foraneo"
-                                                    value="{{ $maquila->foraneo }}" placeholder="extra por examen">
+                                                <label class="labelTitulo">Fecha de nacimiento:</label></br>
+                                                <input type="date" class="inputCaja" id="nacimiento" name="nacimiento"
+                                                    value="{{ $paciente->nacimiento }}">
                                             </div>
 
                                         </div>

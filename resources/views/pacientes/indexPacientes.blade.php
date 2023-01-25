@@ -36,10 +36,9 @@
                                             <thead class="labelTitulo">
                                                 <th>ID</th>
                                                 <th>Nombre</th>
-                                                <th>Direccion</th>
+                                                <th>Apellido</th>
                                                 <th>Telefono </th>
-                                                <th>Correo</th>
-                                                <th>Encargado</th>
+                                                <th>Nacimiento</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
@@ -47,10 +46,9 @@
                                                     <tr>
                                                         <td>{{ $paciente->id }}</td>
                                                         <td>{{ $paciente->nombre }}</td>
-                                                        <td>{{ $paciente->direccion }}</td>
+                                                        <td>{{ $paciente->apellido }}</td>
                                                         <td>{{ $paciente->telefono }}</td>
-                                                        <td>{{ $paciente->correo }}</td>
-                                                        <td>{{ $paciente->encargado }}</td>
+                                                        <td>{{ $paciente->nacimiento }}</td>
 
                                                         <td class="td-actions text-right">
                                                             @can('user_show')
