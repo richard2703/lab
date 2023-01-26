@@ -169,4 +169,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('examenes', App\Http\Controllers\examenesController::class);
     Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
     Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
+    Route::resource('tickets', App\Http\Controllers\ticketsController::class);
 });

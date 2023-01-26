@@ -547,22 +547,24 @@ CREATE TABLE maquila (
 CREATE TABLE tickets(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   paciente_id bigint(20) unsigned NOT NULL,
-  maquila_id bigint(20) unsigned NOT NULL,
+  maquila_id bigint(20) unsigned NULL,
   total float default 0 ,
+  abono float default 0 ,
+  doctor varchar(250),
   created_at datetime NULL,
   updated_at datetime NULL,
   PRIMARY KEY (id),
   CONSTRAINT FK_tickets_examenId foreign key (paciente_id) references pacientes(id) on update cascade on delete cascade,
   CONSTRAINT FK_tickets_maquilaId foreign key (maquila_id) references maquilas(id) on update cascade on delete cascade
- );
+ ); 
 
 CREATE TABLE tomas(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   examenes_id bigint(20) unsigned NOT NULL,
-  ticket_id bigint(20) unsigned NOT NULL,
+  tickets_id bigint(20) unsigned NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT FK_tomas_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
-  CONSTRAINT FK_tomas_ticketid foreign key (ticket_id) references tickets(id) on update cascade on delete cascade
+  CONSTRAINT FK_tomas_ticketid foreign key (tickets_id) references tickets(id) on update cascade on delete cascade
  );
 
 CREATE TABLE resultados(

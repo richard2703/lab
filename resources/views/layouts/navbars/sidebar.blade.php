@@ -223,6 +223,17 @@
                 </div>
             </li>
 
+            <!------ Tickets ------>
+            <li class="nav-item {{ $activePage == 'Tickets' || $activePage == 'user-management' ? ' active' : '' }}">
+                <a href="{{ route('tickets.index') }}" onmouseover="cambiar3();" onmouseout="volver3();"
+                    class="nav-link -item{{ $activePage == 'tickets' ? ' active' : '' }} ">
+                    <i><img id="cambiaBCO3" style="width:25px"
+                            src="{{ $activePage == 'inventario' ? ' img/navs/inventarioMenuBCO.svg' : '/img/navs/inventarioMenu.svg' }}"></i>
+                    <p> {{ __('Tickets') }} </p>
+                    {{--  <b class="caret"></b>  --}}
+                </a>
+            </li>
+
             <!------ Maquilas ------>
             <li class="nav-item {{ $activePage == 'maquilas' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a href="{{ route('maquilas.index') }}" onmouseover="cambiar3();" onmouseout="volver3();"
