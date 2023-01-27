@@ -103,12 +103,13 @@
                                 <div class="row ">
                                     <label class="labelTitulo">Examenes:</label></br>
                                     <div class="col-12 " style=" display: contents;">
-                                        @forelse ($examenes as $id => $examene)
+                                        @forelse ($examenes as $examene)
                                             <div class=" col-12 col-sm-6 col-lg-4 my-1">
-                                                <input type="checkbox" id="{{ $id }}" name="examenes[]"
-                                                    value="{{ $id }}"
-                                                    {{ $ticket->examenes->contains($id) ? 'checked' : '' }}>
-                                                <label for="{{ $id }}"> {{ $examene->nombre }}</label>
+                                                <input type="checkbox" id="{{ $examene->id }}" name="examenes[]"
+                                                    value="{{ $examene->id }}"
+                                                    onclick="sumar({{ $examene->id }},{{ $examene->costo }});"
+                                                    {{ $ticket->examenes->contains($examene->id) ? 'checked' : '' }}>
+                                                <label for="{{ $examene->id }}">{{ $examene->nombre }} </label>
                                             </div>
                                         @empty
                                             <label> No hay </label>
@@ -126,6 +127,14 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
+    <script>
+        function sumar(id, valor) {
+            if ($('#' + id).prop("checked")) {
+                total = (parseFloat(document.getElementById('total').value) + parseFloat(valor)).toFixed(2);
+            } else {
+                total = (parseFloat(document.getElementById('total').value) - parseFloat(valor)).toFixed(2);
+            }
+            document.getElementById('total').value = total;
+        }
+    </script>
 @endsection
