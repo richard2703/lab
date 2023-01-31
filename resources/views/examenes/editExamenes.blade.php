@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'Examenes', 'titlePage' => __('Alta de Obra')])
+@extends('layouts.main', ['activePage' => 'Examenes', 'titlePage' => __('Examenes')])
 @section('content')
     <div class="content">
         @if ($errors->any())
@@ -36,6 +36,11 @@
                                             <label class="labelTitulo">costo:</label></br>
                                             <input type="number" class="inputCaja" id="costo" name="costo"
                                                 value="{{ $examene->costo }}">
+                                        </div>
+                                        <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
+                                            <label class="labelTitulo">Costo Maquila:</label></br>
+                                            <input type="number" class="inputCaja" id="maquila" name="maquila"
+                                                value="{{ $examene->maquila }}">
                                         </div>
                                         <div class="row ">
                                             <label class="labelTitulo">Parametros:</label></br>

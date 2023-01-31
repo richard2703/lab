@@ -36,6 +36,11 @@
                                             <input type="number" class="inputCaja" id="costo" name="costo"
                                                 value="{{ old('costo') }}">
                                         </div>
+                                        <div class=" col-12 col-sm-6  col-lg-4 my-3 ">
+                                            <label class="labelTitulo">Costo Maquila:</label></br>
+                                            <input type="number" class="inputCaja" id="maquila" name="maquila"
+                                                value="{{ old('maquila') }}">
+                                        </div>
                                         <div class="row ">
                                             <label class="labelTitulo">Parametros:</label></br>
                                             <div class="col-12 " style=" display: contents;">

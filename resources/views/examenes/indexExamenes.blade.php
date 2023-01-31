@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'Examenes', 'titlePage' => __('Lista de Personal')])
+@extends('layouts.main', ['activePage' => 'Examenes', 'titlePage' => __('Lista de Examenes')])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -41,8 +41,8 @@
                                             <thead class="labelTitulo">
                                                 <th>ID</th>
                                                 <th>Nombre</th>
-                                                <th>Baja</th>
-                                                <th>Alta </th>
+                                                <th>Costo</th>
+                                                <th>Maquila </th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
@@ -50,8 +50,8 @@
                                                     <tr>
                                                         <td>{{ $examen->id }}</td>
                                                         <td>{{ $examen->nombre }}</td>
-                                                        <td>{{ $examen->bajo }}</td>
-                                                        <td>{{ $examen->alto }}</td>
+                                                        <td>{{ $examen->costo }}</td>
+                                                        <td>{{ $examen->maquila }}</td>
                                                         <td class="td-actions text-right">
                                                             {{--  @can('user_show')
                                                                 <a href="{{ route('users.show', $parametro->id) }}">

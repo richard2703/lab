@@ -58,7 +58,7 @@
                                                                 <button class="botonSinFondo mx-2 " title="Resurtir"
                                                                     type="button" data-bs-toggle="modal"
                                                                     data-bs-target="#modal-update"
-                                                                    onclick="cargar('{{ $parametro->id }}','{{ $parametro->nombre }}','{{ $parametro->bajo }}','{{ $parametro->alto }}')">
+                                                                    onclick="cargar('{{ $parametro->id }}','{{ $parametro->nombre }}','{{ $parametro->bajo }}','{{ $parametro->alto }}','{{ $parametro->tipo }}','{{ $parametro->medicion }}','{{ $parametro->referencia }}')">
                                                                     <i class="bi bi-pencil-fill "></i>
                                                                 </button>
                                                             @endcan
@@ -124,15 +124,27 @@
                                         <input class="inputCaja" type="text" id="nombre" name="nombre" value=""
                                             required></br>
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="labelTitulo" for="">Bajo:</label></br>
                                         <input class="inputCaja" type="number" step="0.01" min="0.01" id="bajo"
                                             name="bajo" value="" required></br>
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="labelTitulo" for="">Alto:</label></br>
                                         <input class="inputCaja" type="number" step="0.01" min="0.01" id="alto"
                                             name="alto" value="" required></br>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-3">
+                                        <label class="labelTitulo" for="">Medicion:</label></br>
+                                        <input class="inputCaja" type="text" id="medicion" name="medicion"></br>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-3">
+                                        <label class="labelTitulo" for="">tipo:</label></br>
+                                        <input class="inputCaja" type="text" id="tipo" name="tipo"></br>
+                                    </div>
+                                    <div class="col-12 ">
+                                        <label class="labelTitulo" for="">Referencia:</label></br>
+                                        <input class="inputCaja" type="text" id="referencia" name="referencia"></br>
                                     </div>
 
                                 </div>
@@ -177,15 +189,27 @@
                                         <label class="labelTitulo" for="">Nombre:</label></br>
                                         <input class="inputCaja" type="text" id="nombreU" name="nombre"></br>
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="labelTitulo" for="">Bajo:</label></br>
                                         <input class="inputCaja" type="number" step="0.01" min="0.01"
                                             id="bajoU" name="bajo"></br>
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="labelTitulo" for="">Alto:</label></br>
                                         <input class="inputCaja" type="number" step="0.01" min="0.01"
                                             id="altoU" name="alto"></br>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-3">
+                                        <label class="labelTitulo" for="">Medicion:</label></br>
+                                        <input class="inputCaja" type="text" id="medicionu" name="medicion"></br>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-3">
+                                        <label class="labelTitulo" for="">tipo:</label></br>
+                                        <input class="inputCaja" type="text" id="tipou" name="tipo"></br>
+                                    </div>
+                                    <div class="col-12 ">
+                                        <label class="labelTitulo" for="">Referencia:</label></br>
+                                        <input class="inputCaja" type="text" id="referenciau" name="referencia"></br>
                                     </div>
 
                                 </div>
@@ -234,10 +258,10 @@
         }
     </script>
     <script>
-        function cargar(id, nombre, baja, alta) {
+        function cargar(id, nombre, baja, alta, tipo, medicion, referencia) {
             const parametroid = document.getElementById('id');
             parametroid.value = id;
-            var url = '{{url("")}}/parametros/'+id;
+            var url = '{{ url('') }}/parametros/' + id;
             const ruta = document.getElementById('update');
             ruta.action = url;
             const parametronombre = document.getElementById('nombreU');
@@ -246,6 +270,12 @@
             parametrobajo.value = baja;
             const parametroalto = document.getElementById('altoU');
             parametroalto.value = alta;
+            const parametrotipo = document.getElementById('tipou');
+            parametrotipo.value = tipo;
+            const parametromedicion = document.getElementById('medicionu');
+            parametromedicion.value = medicion;
+            const parametroreferencia = document.getElementById('referenciau');
+            parametroreferencia.value = referencia;
         }
     </script>
 @endsection
