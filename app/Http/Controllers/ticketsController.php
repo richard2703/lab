@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\tickets;
+use App\Models\personal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\examenes;
+use Illuminate\Support\Facades\DB;
+
 
 class ticketsController extends Controller
 {
 
     public function index()
     {
-        $tickets = tickets::paginate(10);
+        $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->paginate(10);
         return view('tickets.indextickets', compact('tickets'));
     }
 

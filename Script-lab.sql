@@ -562,6 +562,7 @@ CREATE TABLE tomas(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   examenes_id bigint(20) unsigned NOT NULL,
   tickets_id bigint(20) unsigned NOT NULL,
+  estatus int null,
   PRIMARY KEY (id),
   CONSTRAINT FK_tomas_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
   CONSTRAINT FK_tomas_ticketid foreign key (tickets_id) references tickets(id) on update cascade on delete cascade

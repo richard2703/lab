@@ -170,4 +170,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
     Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
     Route::resource('tickets', App\Http\Controllers\ticketsController::class);
+    Route::resource('resultados', App\Http\Controllers\resultadosController::class);
+    Route::get('/ticket/resultados/{ticket}', [App\Http\Controllers\resultadosController::class, 'resultados'])->name('resultados.resultado');
 });

@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'Tickets', 'titlePage' => __('Lista de Tickets')])
+@extends('layouts.main', ['activePage' => 'Resultados', 'titlePage' => __('Lista de Resultados')])
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -8,7 +8,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header bacTituloPrincipal">
-                                    <h4 class="card-title">Tickets</h4>
+                                    <h4 class="card-title">Resultados</h4>
                                     {{-- <p class="card-category">Usuarios registrados</p> --}}
                                 </div>
                                 <div class="card-body">
@@ -25,7 +25,7 @@
                                     <div class="row justify-content-end">
                                         <div class="col-2 text-center mb-5">
                                             {{-- @can('user_create') --}}
-                                            <a href="{{ route('tickets.create') }}">
+                                            <a href="{{ route('resultados.create') }}">
                                                 <button type="button" class="botonSinFondo ">
                                                     <img
                                                         style="width: 30px;"src="{{ '/img/inventario/nuevo.svg' }}"></button>
@@ -41,31 +41,24 @@
                                             <thead class="labelTitulo">
                                                 <th>ID</th>
                                                 <th>Nombre</th>
-                                                <th>Apellido</th>
-                                                <th>Telefono</th>
-                                                <th>Total</th>
-                                                <th>Abono </th>
+                                                <th>Resultado</th>
+                                                <th>Estatus</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
-                                                @forelse ($tickets as $ticket)
+                                                @forelse ($tomas as $toma)
                                                     <tr>
-                                                        <td>{{ $ticket->id }}</td>
-                                                        <td>{{ $ticket->nombre }}</td>
-                                                        <td>{{ $ticket->apellido }}</td>
-                                                        <td>{{ $ticket->telefono }}</td>
-                                                        <td>{{ $ticket->total }}</td>
-                                                        <td>{{ $ticket->abono }}</td>
+                                                        <td>{{ $toma->id }}</td>
+                                                        <td>{{ $toma->nombre }}</td>
+                                                        <td>{{ $toma->bajo }}</td>
+                                                        <td>{{ $toma->alto }}</td>
                                                         <td class="td-actions text-right">
-                                                            @can('user_show')
-                                                                <a href="{{ route('resultados.resultado', $ticket->id) }}">
-                                                                    <button class="botonSinFondo mx-2 " title="Editar"
-                                                                        type="button">
-                                                                        <i class="bi bi-person-vcard "></i>
-                                                                    </button> </a>
-                                                            @endcan
+                                                            {{--  @can('user_show')
+                                                                <a href="{{ route('users.show', $parametro->id) }}">
+                                                                    <i class="bi bi-person-vcard  colorVolverGral"></i></a>
+                                                            @endcan  --}}
                                                             @can('user_edit')
-                                                                <a href="{{ route('tickets.edit', $ticket->id) }}">
+                                                                <a href="{{ route('resultados.edit', $toma->id) }}">
                                                                     <button class="botonSinFondo mx-2 " title="Editar"
                                                                         type="button">
                                                                         <i class="bi bi-pencil-fill "></i>
@@ -79,7 +72,7 @@
                                                             @endcan
                                                             @can('user_destroy')
                                                                 <form class="alertaBorrar" <form class="alertaBorrar"
-                                                                    action="{{ route('tickets.destroy', $ticket->id) }}"
+                                                                    action="{{ route('resultados.destroy', $toma->id) }}"
                                                                     method="POST" style="display: inline-block;">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -102,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer mr-auto">
-                                    {{ $tickets->links() }}
+                                    {{ $tomas->links() }}
                                 </div>
                             </div>
                         </div>
