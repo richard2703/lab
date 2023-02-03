@@ -235,16 +235,15 @@
             </li>
 
             <!------ Resultados ------>
-            <li
+            {{--  <li
                 class="nav-item {{ $activePage == 'Resultados' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a href="{{ route('resultados.index') }}" onmouseover="cambiar3();" onmouseout="volver3();"
                     class="nav-link -item{{ $activePage == 'Resultados' ? ' active' : '' }} ">
                     <i><img id="cambiaBCO3" style="width:25px"
                             src="{{ $activePage == 'inventario' ? ' img/navs/inventarioMenuBCO.svg' : '/img/navs/inventarioMenu.svg' }}"></i>
                     <p> {{ __('Resultados') }} </p>
-                    {{--  <b class="caret"></b>  --}}
                 </a>
-            </li>
+            </li>  --}}
 
             <!------ Maquilas ------>
             <li class="nav-item {{ $activePage == 'maquilas' || $activePage == 'user-management' ? ' active' : '' }}">

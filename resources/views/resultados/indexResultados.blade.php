@@ -8,7 +8,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header bacTituloPrincipal">
-                                    <h4 class="card-title">Resultados</h4>
+                                    <h4 class="card-title">Ticket N°: {{ $ticket->id }} - {{ $ticket->nombre }}
+                                        {{ $ticket->apellido }}</h4>
                                     {{-- <p class="card-category">Usuarios registrados</p> --}}
                                 </div>
                                 <div class="card-body">
@@ -23,8 +24,8 @@
                                         </div>
                                     @endif
                                     <div class="row justify-content-end">
-                                        <div class="col-2 text-center mb-5">
-                                            {{-- @can('user_create') --}}
+                                        {{--  <div class="col-2 text-center mb-5">
+                                            @can('user_create')
                                             <a href="{{ route('resultados.create') }}">
                                                 <button type="button" class="botonSinFondo ">
                                                     <img
@@ -33,36 +34,45 @@
 
                                             </a>
 
-                                            {{-- @endcan --}}
-                                        </div>
+                                            @endcan
+                                        </div>  --}}
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class="labelTitulo">
                                                 <th>ID</th>
-                                                <th>Nombre</th>
-                                                <th>Resultado</th>
+                                                <th>Examen</th>
+                                                <th>Estatus</th>
                                                 <th>Estatus</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
-                                                @forelse ($tomas as $toma)
+                                                @forelse ($examenes as $examene)
                                                     <tr>
-                                                        <td>{{ $toma->id }}</td>
-                                                        <td>{{ $toma->nombre }}</td>
-                                                        <td>{{ $toma->bajo }}</td>
-                                                        <td>{{ $toma->alto }}</td>
+                                                        <td>{{ $examene->id }}</td>
+                                                        <td>{{ $examene->nombre }}</td>
+                                                        <td>{{ $examene->estatus }}</td>
+                                                        <td>{{ $examene->alto }}</td>
                                                         <td class="td-actions text-right">
                                                             {{--  @can('user_show')
                                                                 <a href="{{ route('users.show', $parametro->id) }}">
                                                                     <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                             @endcan  --}}
                                                             @can('user_edit')
-                                                                <a href="{{ route('resultados.edit', $toma->id) }}">
+                                                                <form action="{{ route('resultados.create', $ticket->id) }}"
+                                                                    method="POST" style="display: inline-block;">
+                                                                    @csrf
+                                                                    <input type="hidden" name="examen"
+                                                                        value="{{ $examene->id }}">
+                                                                    <button class="btnSinFondo" type="submit" rel="tooltip">
+                                                                        <i class="bi bi-pencil-fill"></i>
+                                                                    </button>
+                                                                </form>
+                                                                {{--  <a href="{{ route('resultados.edit', $examene->id) }}">
                                                                     <button class="botonSinFondo mx-2 " title="Editar"
                                                                         type="button">
                                                                         <i class="bi bi-pencil-fill "></i>
-                                                                    </button> </a>
+                                                                    </button> </a>  --}}
                                                                 {{--  <button class="botonSinFondo mx-2 " title="Resurtir"
                                                                     type="button" data-bs-toggle="modal"
                                                                     data-bs-target="#modal-update"
@@ -71,8 +81,8 @@
                                                                 </button>  --}}
                                                             @endcan
                                                             @can('user_destroy')
-                                                                <form class="alertaBorrar" <form class="alertaBorrar"
-                                                                    action="{{ route('resultados.destroy', $toma->id) }}"
+                                                                {{--  <form class="alertaBorrar"
+                                                                    action="{{ route('resultados.destroy', $examene->id) }}"
                                                                     method="POST" style="display: inline-block;">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -80,8 +90,7 @@
                                                                         onclick="alertaBorrar()" rel="tooltip">
                                                                         <i class="bi bi-x-circle"></i>
                                                                     </button>
-                                                                </form>
-                                                                </form>
+                                                                </form>  --}}
                                                             @endcan
                                                         </td>
                                                     </tr>
@@ -95,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer mr-auto">
-                                    {{ $tomas->links() }}
+                                    {{ $examenes->links() }}
                                 </div>
                             </div>
                         </div>

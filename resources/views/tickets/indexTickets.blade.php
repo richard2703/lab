@@ -58,7 +58,7 @@
                                                         <td>{{ $ticket->abono }}</td>
                                                         <td class="td-actions text-right">
                                                             @can('user_show')
-                                                                <a href="{{ route('resultados.resultado', $ticket->id) }}">
+                                                                <a href="{{ route('resultados.index', $ticket->id) }}">
                                                                     <button class="botonSinFondo mx-2 " title="Editar"
                                                                         type="button">
                                                                         <i class="bi bi-person-vcard "></i>

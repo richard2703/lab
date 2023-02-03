@@ -170,6 +170,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('maquilas', App\Http\Controllers\maquilasController::class);
     Route::resource('pacientes', App\Http\Controllers\pacientesController::class);
     Route::resource('tickets', App\Http\Controllers\ticketsController::class);
-    Route::resource('resultados', App\Http\Controllers\resultadosController::class);
-    Route::get('/ticket/resultados/{ticket}', [App\Http\Controllers\resultadosController::class, 'resultados'])->name('resultados.resultado');
+    // Route::resource('resultados', App\Http\Controllers\resultadosController::class);
+    Route::get('/ticket/{ticket}/examenes', [App\Http\Controllers\resultadosController::class, 'index'])->name('resultados.index');
+    Route::post('/ticket/{ticket}/resultados', [App\Http\Controllers\resultadosController::class, 'create'])->name('resultados.create');
+
+    // Route::post('/accesorios', [App\Http\Controllers\accesoriosController::class, 'store'])->name('accesorios.store');
+    // Route::get('/accesorios/{accesorios}', [App\Http\Controllers\accesoriosController::class, 'show'])->name('accesorios.show');
+    // Route::put('/accesorios/{accesorios}', [App\Http\Controllers\accesoriosController::class, 'update'])->name('accesorios.update');
+    // Route::get('/accesorios/{accesorios}/edit', [App\Http\Controllers\accesoriosController::class, 'edit'])->name('accesorios.edit');
+    // Route::delete('/accesorios/{accesorios}', [App\Http\Controllers\accesoriosController::class, 'destroy'])->name('accesorios.delete');
 });

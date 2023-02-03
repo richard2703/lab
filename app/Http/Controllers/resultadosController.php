@@ -5,26 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\resultados;
 use App\Models\tomas;
 use App\Models\tickets;
+use App\Models\examenes;
+use App\Models\parametros;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class resultadosController extends Controller
 {
 
-    public function index()
+    public function index($ticket)
     {
-        $tomas = tomas::paginate(10);
-        return view('resultados.indexresultados', compact('tomas'));
-    }
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->where('tickets.id', $ticket)
+            ->first();
 
-    public function resultados($ticket)
-    {
-        dd($ticket);
-        // $tickets = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
-        // ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
-        // ->paginate(10);
-        $tomas = tomas::paginate(10);
-        return view('resultados.indexresultados', compact('tomas'));
+        $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id')
+            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus')
+            ->paginate(10);
+        // dd($ticket);
+
+        // $tomas = tomas::paginate(10);
+        return view('resultados.indexresultados', compact('ticket', 'examenes'));
     }
 
     /**
@@ -32,9 +34,18 @@ class resultadosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $ticket)
     {
-        //
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->where('tickets.id', $ticket)
+            ->first();
+        $examen = examenes::where('id', $request->examen)
+            ->get();
+        $parametros = parametros::all()->pluck('nombre', 'id');
+        $examen->load('parametros');
+        // MANDAR A VER LOS PARAMETROS Y LLENARLOS
+        return view('resultados.createresultados', compact('ticket', 'examenes'));
     }
 
     /**
@@ -45,7 +56,7 @@ class resultadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('store');
     }
 
     /**
@@ -56,7 +67,7 @@ class resultadosController extends Controller
      */
     public function show(resultados $resultados)
     {
-        //
+        dd('show');
     }
 
     /**
