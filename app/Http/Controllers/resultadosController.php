@@ -40,20 +40,17 @@ class resultadosController extends Controller
             ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
             ->where('tickets.id', $ticket)
             ->first();
-        $examen = examenes::where('id', $request->examen)
+        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->where('examenes.id', $request->examen)
             ->get();
-        $parametros = parametros::all()->pluck('nombre', 'id');
-        $examen->load('parametros');
+
+        // dd($request);
         // MANDAR A VER LOS PARAMETROS Y LLENARLOS
-        return view('resultados.createresultados', compact('ticket', 'examenes'));
+        return view('resultados.createresultados', compact('ticket', 'examen'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         dd('store');
@@ -78,7 +75,7 @@ class resultadosController extends Controller
      */
     public function edit(resultados $resultados)
     {
-        //
+        dd('edit');
     }
 
     /**
@@ -90,7 +87,7 @@ class resultadosController extends Controller
      */
     public function update(Request $request, resultados $resultados)
     {
-        //
+        dd('update');
     }
 
     /**
@@ -101,6 +98,6 @@ class resultadosController extends Controller
      */
     public function destroy(resultados $resultados)
     {
-        //
+        dd('destroy');
     }
 }
