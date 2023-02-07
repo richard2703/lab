@@ -178,9 +178,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row  card-body">
-                                <div class="row card-body" style="
-					 text-align: center;">
+                            <div class="row  card-body ">
+                                <div class="row card-body text-center">
                                     <div class="col-12 ">
                                         <img style="width: 100px;" id="imagenM">
                                     </div>
@@ -189,28 +188,81 @@
                                         <label class="labelTitulo" for="">Nombre:</label></br>
                                         <input class="inputCaja" type="text" id="nombreU" name="nombre"></br>
                                     </div>
-                                    <div class="col-12 col-lg-6 mb-3">
-                                        <label class="labelTitulo" for="">Bajo:</label></br>
-                                        <input class="inputCaja" type="number" step="0.01" min="0.01"
-                                            id="bajoU" name="bajo"></br>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mb-3">
-                                        <label class="labelTitulo" for="">Alto:</label></br>
-                                        <input class="inputCaja" type="number" step="0.01" min="0.01"
-                                            id="altoU" name="alto"></br>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mb-3">
-                                        <label class="labelTitulo" for="">Medicion:</label></br>
-                                        <input class="inputCaja" type="text" id="medicionu" name="medicion"></br>
-                                    </div>
-                                    <div class="col-12 col-lg-6 mb-3">
+                                    <div class="col-12 mb-3">
                                         <label class="labelTitulo" for="">tipo:</label></br>
                                         <input class="inputCaja" type="text" id="tipou" name="tipo"></br>
                                     </div>
-                                    <div class="col-12 ">
-                                        <label class="labelTitulo" for="">Referencia:</label></br>
-                                        <input class="inputCaja" type="text" id="referenciau" name="referencia"></br>
+
+                                    <label class="labelTitulo" for="">Tipo de respuesta:</label></br>
+
+
+
+
+                                    <div class="col-12 mb-3 nav nav-tabs navMenuBalance justify-content-evenly"
+                                        id="nav-tab" role="tablist">
+
+
+
+                                        <label class="labelTitulo"> <input value="1" type="radio" name="opc"
+                                                id="balanceUno-tab" data-bs-toggle="tab" data-bs-target="#balanceUno"
+                                                role="tab" aria-controls="balanceUno" aria-selected="true"
+                                                checked>Numerica</label><br>
+
+                                        <label class="labelTitulo"> <input value="2" type="radio" name="opc"
+                                                d="balanceDos-tab" data-bs-toggle="tab" data-bs-target="#balanceDos"
+                                                role="tab" aria-controls="balanceDos"
+                                                aria-selected="false">Texto</label><br>
+
+                                        {{--  <div class="col-4">
+                                    <p class="text-end mb-2">Datos de Registro</p>
+                                    <p class="text-end combustibleFecha"> 22/11/2022</p>
+                                    <p class="text-end combustibleHora my-2">2:00 pm</p>
+                                </div>  --}}
                                     </div>
+
+                                    <div class="tab-content" id="nav-tabContent ">
+
+                                        <div class="tab-pane fade show active border" id="balanceUno" role="tabpanel"
+                                            aria-labelledby="balanceUno-tab" tabindex="0">
+                                            <div class="row d-flex">
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="labelTitulo" for="">Bajo:</label></br>
+                                                    <input class="inputCaja text-center" type="number" step="0.01"
+                                                        min="0.01" id="bajoU" name="bajo"></br>
+                                                </div>
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="labelTitulo" for="">Alto:</label></br>
+                                                    <input class="inputCaja text-end" type="number" step="0.01"
+                                                        min="0.01" id="altoU" name="alto"></br>
+                                                </div>
+
+                                                <div class="col-12 col-lg-6 mb-3">
+                                                    <label class="labelTitulo" for="">Medicion:</label></br>
+                                                    <input class="inputCaja" type="text" id="medicionu"
+                                                        name="medicion"></br>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="tab-pane fade border" id="balanceDos" role="tabpanel"
+                                            aria-labelledby="balanceDos-tab" tabindex="0">
+                                            <div class="row">
+                                                <div class="col-12 ">
+                                                    <label class="labelTitulo" for="">Referencia:</label></br>
+                                                    <input class="inputCaja" type="text" id="referenciau"
+                                                        name="referencia"></br>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+
+
 
                                 </div>
                             </div>

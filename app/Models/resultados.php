@@ -13,6 +13,6 @@ class resultados extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ticket_id', 'examen_id', 'parametro_id', 'resultado', 'nota', 'comentario'
+        'ticket_id', 'examen_id', 'parametro_id', 'resultado'
     ];
 }

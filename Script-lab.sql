@@ -498,11 +498,12 @@ alter table obramaqper add combustible int DEFAULT 0;
 CREATE TABLE parametros(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NOT NULL,
+  tipo varchar(255) null
   alto float(10,2) null null,
   bajo float(10,2) null,
-  referencia varchar(255) null,
-  tipo varchar(255) null
   medicion varchar(255),
+  escrito varchar (255) null,
+  referencia varchar(255) null,
   PRIMARY KEY (id)
  );
 
@@ -511,6 +512,7 @@ CREATE TABLE examenes(
   nombre varchar(255) NOT NULL,
   costo float(10,2) null,
   maquila float(10,2) null,
+  leyenda text null ,
   PRIMARY KEY (id)
 );
 
@@ -563,6 +565,8 @@ CREATE TABLE tomas(
   examenes_id bigint(20) unsigned NOT NULL,
   tickets_id bigint(20) unsigned NOT NULL,
   estatus int default 0,
+  nota text null,
+  comentario text null,
   PRIMARY KEY (id),
   CONSTRAINT FK_tomas_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
   CONSTRAINT FK_tomas_ticketid foreign key (tickets_id) references tickets(id) on update cascade on delete cascade
@@ -574,8 +578,6 @@ CREATE TABLE resultados(
   ticket_id bigint(20) unsigned NOT NULL,
   parametros_id bigint(20) unsigned NOT NULL,
   resultado varchar(255) not null,
-  nota text null,
-  comentario text null,
   PRIMARY KEY (id),
   CONSTRAINT FK_resultados_examenId foreign key (examenes_id) references examenes(id) on update cascade on delete cascade,
   CONSTRAINT FK_resultados_ticketid foreign key (ticket_id) references tickets(id) on update cascade on delete cascade,

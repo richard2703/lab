@@ -10,7 +10,7 @@
         <ul class="nav">
 
             <!-- EQUIPOS -->
-            <li class="nav-item {{ $activePage == 'dashboard' || $activePage == 'user-management' ? ' active' : '' }}">
+            {{--  <li class="nav-item {{ $activePage == 'dashboard' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a href="#equipo" onmouseover="cambiar();" onmouseout="volver();" class="nav-link p-2"
                     data-toggle="collapse" aria-expanded="false">
                     <i><img id="cambiaBCO"
@@ -53,10 +53,10 @@
 
                     </ul>
                 </div>
-            </li>
+            </li>  --}}
 
             <!------ PERSONAL ------>
-            <li class="nav-item {{ $activePage == 'personal' || $activePage == 'user-management' ? ' active' : '' }}">
+            {{--  <li class="nav-item {{ $activePage == 'personal' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link p-2 " onmouseover="cambiar2();" onmouseout="volver2();" data-toggle="collapse"
                     href="#personal" aria-expanded="false">
                     <i><img id="cambiaBCO2" style="width:25px"
@@ -91,22 +91,22 @@
 
                     </ul>
                 </div>
-            </li>
+            </li>  --}}
 
             <!------ INVENTARIO ------>
-            <li
+            {{--  <li
                 class="nav-item {{ $activePage == 'inventario' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a href="{{ route('inventario.dash') }}" onmouseover="cambiar3();" onmouseout="volver3();"
                     class="nav-link -item{{ $activePage == 'obra' ? ' active' : '' }} ">
                     <i><img id="cambiaBCO3" style="width:25px"
                             src="{{ $activePage == 'inventario' ? ' img/navs/inventarioMenuBCO.svg' : '/img/navs/inventarioMenu.svg' }}"></i>
                     <p> {{ __('inventario') }} </p>
-                    {{--  <b class="caret"></b>  --}}
+                    <!--  <b class="caret"></b>  -->
                 </a>
-            </li>
+            </li>  --}}
 
             <!------ OBRA ------>
-            <li class="nav-item {{ $activePage == 'obra' || $activePage == 'user-management' ? ' active' : '' }}">
+            {{--  <li class="nav-item {{ $activePage == 'obra' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link p-2" onmouseover="cambiar4();" onmouseout="volver4();" data-toggle="collapse"
                     href="#obras" aria-expanded="false">
                     <i><img id="cambiaBCO4"
@@ -140,9 +140,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li>  --}}
             <!------ BITÁCORAS ------>
-            <li
+            {{--  <li
                 class="nav-item {{ $activePage == 'bitacoras' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link p-2" onmouseover="cambiar5();" onmouseout="volver5();" data-toggle="collapse"
                     href="#bitacorass" aria-expanded="false">
@@ -181,9 +181,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li>  --}}
             <!------ FORMATOS ------>
-            <li class="nav-item {{ $activePage == 'formatos' || $activePage == 'user-management' ? ' active' : '' }}">
+            {{--  <li class="nav-item {{ $activePage == 'formatos' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link p-2" onmouseover="cambiar6();" onmouseout="volver6();" data-toggle="collapse"
                     href="#formatoss" aria-expanded="false">
                     <i><img id="cambiaBCO6"
@@ -221,7 +221,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li>  --}}
 
             <!------ Tickets ------>
             <li class="nav-item {{ $activePage == 'Tickets' || $activePage == 'user-management' ? ' active' : '' }}">
@@ -256,8 +256,7 @@
                 </a>
             </li>
             <!------ pacientes ------>
-            <li
-                class="nav-item {{ $activePage == 'pacientes' || $activePage == 'user-management' ? ' active' : '' }}">
+            <li class="nav-item {{ $activePage == 'pacientes' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a href="{{ route('pacientes.index') }}" onmouseover="cambiar3();" onmouseout="volver3();"
                     class="nav-link -item{{ $activePage == 'maquilas' ? ' active' : '' }} ">
                     <i><img id="cambiaBCO3" style="width:25px"

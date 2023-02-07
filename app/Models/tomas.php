@@ -13,6 +13,6 @@ class tomas extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ticket_id', 'examen_id', 'estatus'
+        'ticket_id', 'examen_id', 'estatus', 'nota', 'comentario'
     ];
 }
