@@ -504,6 +504,7 @@ CREATE TABLE parametros(
   medicion varchar(255),
   escrito varchar (255) null,
   referencia varchar(255) null,
+  respuesta int null,
   PRIMARY KEY (id)
  );
 
