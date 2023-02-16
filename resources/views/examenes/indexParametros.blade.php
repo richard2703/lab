@@ -121,54 +121,53 @@
                                     <div class="col-12 mb-3 ">
                                         <input type="hidden" name="id" id="id">
                                         <label class="labelTitulo" for="">Nombre:</label></br>
-                                        <input class="inputCaja" type="text" id="nombreU" name="nombre"></br>
+                                        <input class="inputCaja" type="text" id="nombre" name="nombre"></br>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label class="labelTitulo" for="">tipo:</label></br>
-                                        <input class="inputCaja" type="text" id="tipou" name="tipo"></br>
+                                        <input class="inputCaja" type="text" id="tipo" name="tipo"></br>
                                     </div>
 
                                     <label class="labelTitulo" for="">Tipo de respuesta:</label></br>
                                     <div class="col-12 mb-3 nav nav-tabs navMenuBalance justify-content-evenly"
                                         id="nav-tab" role="tablist">
-                                        <label class="labelTitulo"> <input value="1" type="radio" name="opc"
-                                                id="balanceUno-tab" data-bs-toggle="tab" data-bs-target="#balanceUno"
-                                                role="tab" aria-controls="balanceUno" aria-selected="true"
-                                                checked>Numerica</label><br>
+                                        <label class="labelTitulo"> <input value="1" type="radio" name="respuesta"
+                                                id="opc1-tab" data-bs-toggle="tab" data-bs-target="#opc1" role="tab"
+                                                aria-controls="opc1" aria-selected="true">Numerica</label><br>
 
-                                        <label class="labelTitulo"> <input value="2" type="radio" name="opc"
-                                                d="balanceDos-tab" data-bs-toggle="tab" data-bs-target="#balanceDos"
-                                                role="tab" aria-controls="balanceDos"
+                                        <label class="labelTitulo"> <input value="2" type="radio" name="respuesta"
+                                                d="opc2-tab" data-bs-toggle="tab" data-bs-target="#opc2"
+                                                role="tab" aria-controls="opc2"
                                                 aria-selected="false">Texto</label><br>
                                     </div>
                                     <div class="tab-content" id="nav-tabContent ">
-                                        <div class="tab-pane fade show active border" id="balanceUno" role="tabpanel"
-                                            aria-labelledby="balanceUno-tab" tabindex="0">
+                                        <div class="tab-pane fade show border" id="opc1" role="tabpanel"
+                                            aria-labelledby="opc1-tab" tabindex="0">
                                             <div class="row d-flex">
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="labelTitulo" for="">Bajo:</label></br>
                                                     <input class="inputCaja text-center" type="number" step="0.01"
-                                                        min="0.01" id="bajoU" name="bajo"></br>
+                                                        min="0.01" id="bajo" name="bajo"></br>
                                                 </div>
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="labelTitulo" for="">Alto:</label></br>
                                                     <input class="inputCaja text-end" type="number" step="0.01"
-                                                        min="0.01" id="altoU" name="alto"></br>
+                                                        min="0.01" id="alto" name="alto"></br>
                                                 </div>
 
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="labelTitulo" for="">Medicion:</label></br>
-                                                    <input class="inputCaja" type="text" id="medicionu"
+                                                    <input class="inputCaja" type="text" id="medicion"
                                                         name="medicion"></br>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade border" id="balanceDos" role="tabpanel"
-                                            aria-labelledby="balanceDos-tab" tabindex="0">
+                                        <div class="tab-pane fade border" id="opc2" role="tabpanel"
+                                            aria-labelledby="opc2-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-12 ">
                                                     <label class="labelTitulo" for="">Referencia:</label></br>
-                                                    <input class="inputCaja" type="text" id="referenciau"
+                                                    <input class="inputCaja" type="text" id="referencia"
                                                         name="referencia"></br>
                                                 </div>
                                             </div>
@@ -216,27 +215,20 @@
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label class="labelTitulo" for="">tipo:</label></br>
-                                        <input class="inputCaja" type="text" id="tipou" name="tipo"></br>
+                                        <input class="inputCaja" type="text" id="tipoU" name="tipo"></br>
                                     </div>
 
                                     <label class="labelTitulo" for="">Tipo de respuesta:</label></br>
-
-
-
-
                                     <div class="col-12 mb-3 nav nav-tabs navMenuBalance justify-content-evenly"
                                         id="nav-tab" role="tablist">
+                                        <label class="labelTitulo"> <input value="1" type="radio"
+                                                name="respuesta" id="balanceUno-tab" data-bs-toggle="tab"
+                                                data-bs-target="#balanceUno" role="tab" aria-controls="balanceUno"
+                                                aria-selected="true" checked>Numerica</label><br>
 
-
-
-                                        <label class="labelTitulo"> <input value="1" type="radio" name="opc"
-                                                id="balanceUno-tab" data-bs-toggle="tab" data-bs-target="#balanceUno"
-                                                role="tab" aria-controls="balanceUno" aria-selected="true"
-                                                checked>Numerica</label><br>
-
-                                        <label class="labelTitulo"> <input value="2" type="radio" name="opc"
-                                                d="balanceDos-tab" data-bs-toggle="tab" data-bs-target="#balanceDos"
-                                                role="tab" aria-controls="balanceDos"
+                                        <label class="labelTitulo"> <input value="2" type="radio"
+                                                name="respuesta" d="balanceDos-tab" data-bs-toggle="tab"
+                                                data-bs-target="#balanceDos" role="tab" aria-controls="balanceDos"
                                                 aria-selected="false">Texto</label><br>
 
                                         {{--  <div class="col-4">
@@ -247,7 +239,6 @@
                                     </div>
 
                                     <div class="tab-content" id="nav-tabContent ">
-
                                         <div class="tab-pane fade show active border" id="balanceUno" role="tabpanel"
                                             aria-labelledby="balanceUno-tab" tabindex="0">
                                             <div class="row d-flex">
@@ -264,32 +255,22 @@
 
                                                 <div class="col-12 col-lg-6 mb-3">
                                                     <label class="labelTitulo" for="">Medicion:</label></br>
-                                                    <input class="inputCaja" type="text" id="medicionu"
+                                                    <input class="inputCaja" type="text" id="medicionU"
                                                         name="medicion"></br>
                                                 </div>
                                             </div>
-
-
                                         </div>
-
                                         <div class="tab-pane fade border" id="balanceDos" role="tabpanel"
                                             aria-labelledby="balanceDos-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-12 ">
                                                     <label class="labelTitulo" for="">Referencia:</label></br>
-                                                    <input class="inputCaja" type="text" id="referenciau"
+                                                    <input class="inputCaja" type="text" id="referenciaU"
                                                         name="referencia"></br>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                     </div>
-
-
-
-
-
                                 </div>
                             </div>
                             <div class="col-12  mb-3 d-flex  justify-content-center align-self-end">
@@ -337,6 +318,7 @@
     </script>
     <script>
         function cargar(id, nombre, baja, alta, tipo, medicion, referencia) {
+
             const parametroid = document.getElementById('id');
             parametroid.value = id;
             var url = '{{ url('') }}/parametros/' + id;
@@ -344,15 +326,15 @@
             ruta.action = url;
             const parametronombre = document.getElementById('nombreU');
             parametronombre.value = nombre;
+            const parametrotipo = document.getElementById('tipoU');
+            parametrotipo.value = tipo;
             const parametrobajo = document.getElementById('bajoU');
             parametrobajo.value = baja;
             const parametroalto = document.getElementById('altoU');
             parametroalto.value = alta;
-            const parametrotipo = document.getElementById('tipou');
-            parametrotipo.value = tipo;
-            const parametromedicion = document.getElementById('medicionu');
+            const parametromedicion = document.getElementById('medicionU');
             parametromedicion.value = medicion;
-            const parametroreferencia = document.getElementById('referenciau');
+            const parametroreferencia = document.getElementById('referenciaU');
             parametroreferencia.value = referencia;
         }
     </script>

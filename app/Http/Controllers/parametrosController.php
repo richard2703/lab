@@ -18,14 +18,14 @@ class parametrosController extends Controller
 
     public function store(Request $request)
     {
-        parametros::create($request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia'));
+        parametros::create($request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta'));
         Session::flash('message', 1);
         return redirect()->back();
     }
 
     public function update(Request $request, parametros $parametro)
     {
-        $data = $request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia');
+        $data = $request->only('nombre', 'tipo', 'alto', 'bajo', 'medicion', 'escrito', 'referencia', 'respuesta');
         $parametro->update($data);
         Session::flash('message', 1);
         return redirect()->action([parametrosController::class, 'index']);

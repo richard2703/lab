@@ -262,7 +262,7 @@ CREATE TABLE nomina(
 CREATE TABLE maquinaria(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NULL,
-  alter table maquinaria add identificador varchar(8) NULL,
+  identificador varchar(8) NULL,
   tipo varchar(255) NULL,
   categoria varchar(255) NULL,
   marca varchar(255) NULL,
@@ -498,8 +498,8 @@ alter table obramaqper add combustible int DEFAULT 0;
 CREATE TABLE parametros(
   id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   nombre varchar(255) NOT NULL,
-  tipo varchar(255) null
-  alto float(10,2) null null,
+  tipo varchar(255) null,
+  alto float(10,2) null,
   bajo float(10,2) null,
   medicion varchar(255),
   escrito varchar (255) null,
@@ -535,7 +535,7 @@ CREATE TABLE pacientes (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE maquila (
+CREATE TABLE maquilas (
     id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     direccion VARCHAR(255) NOT NULL,
