@@ -38,8 +38,7 @@ class ticketsController extends Controller
         $ticket = tickets::create($request->only('paciente_id', 'maquila_id', 'total', 'abono', 'doctor'));
         $ticket->examenes()->sync($request->input('examenes', []));
         Session::flash('message', 1);
-        $tickets = tickets::paginate(10);
-        return view('tickets.indextickets', compact('tickets'));
+        return redirect()->action([ticketsController::class, 'index']);
     }
 
     public function show(tickets $tickets)
@@ -64,8 +63,10 @@ class ticketsController extends Controller
         return view('tickets.indextickets', compact('tickets'));
     }
 
-    public function destroy(tickets $tickets)
+    public function destroy(tickets $ticket)
     {
-        //
+        $ticket->delete();
+        Session::flash('message', 2);
+        return redirect()->action([ticketsController::class, 'index']);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\tomas;
 use App\Models\tickets;
 use App\Models\examenes;
 use App\Models\parametros;
+use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -44,16 +45,31 @@ class resultadosController extends Controller
             ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
             ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
+            ->first();
+        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
+            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta')
+            ->where('examenparametro.examenes_id', $request->examen)
             ->get();
 
-        // dd($request);
+
+        // dd($parametros);
         // MANDAR A VER LOS PARAMETROS Y LLENARLOS
-        return view('resultados.createresultados', compact('ticket', 'examen'));
+        return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
     }
 
     public function store(Request $request)
     {
-        dd('store');
+        // dd(count($request->parametro));
+        $c = count($request->parametro);
+        for ($i = 0; $i < $c; $i++) {
+            $resultado = new resultados();
+            $resultado->examenes_id = $request->examenes_id;
+            $resultado->ticket_id = $request->ticket_id;
+            $resultado->parametros_id = $request->parametro[$i];
+            $resultado->resultado = $request->respuesta[$i];
+            $resultado->save();
+        }
+        return redirect()->action([examenesController::class, 'index']);
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'Tickets', 'titlePage' => __('Alta de Ticket')])
+@extends('layouts.main', ['activePage' => 'Tickets', 'titlePage' => __('Resultados')])
 @section('content')
     <div class="content">
         @if ($errors->any())
@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-header bacTituloPrincipal">
                             <h4 class="card-title">Ticket N°: {{ $ticket->id }} - {{ $ticket->nombre }}
-                                {{ $ticket->apellido }} - {{ $examen[0]->nombre }}</h4>
+                                {{ $ticket->apellido }} - {{ $examen->nombre }}</h4>
                             {{-- <p class="card-category">Usuarios registrados</p> --}}
                         </div>
                         <div class="card-body ">
@@ -36,78 +36,52 @@
                                 </div>  --}}
                             </div>
 
-                            <form class="row alertaGuardar" action="{{ route('tickets.store') }}" method="post"
+                            <form class="row alertaGuardar" action="{{ route('resultados.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="paciente_id" value="1">
-                                {{--  <div class="col-12  my-3 ">
-                                    <div class="row">
-                                        <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                            <label class="labelTitulo">Nombre:</label></br>
-                                            <input type="text" class="inputCaja" id="nombre" name="nombre"
-                                                value="">
-                                        </div>
+                                <input type="hidden" name="examenes_id" value={{ $ticket->id }}>
+                                <input type="hidden" name="ticket_id" value={{ $examen->id }}>
 
-                                        <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                            <label class="labelTitulo">Apellido:</label></br>
-                                            <input type="text" class="inputCaja" id="apellido" name="apellido"
-                                                value="">
-                                        </div>
-
-                                        <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                            <label class="labelTitulo">Telefono:</label></br>
-                                            <input type="text" class="inputCaja" id="telefono" name="telefono"
-                                                value="">
-                                        </div>
-
-                                        <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                            <label class="labelTitulo">Fecha de nacimiento:</label></br>
-                                            <input type="date" class="inputCaja" id="nacimiento" name="nacimiento"
-                                                value="">
-                                        </div>
-
-                                        <div class=" col-12 col-sm-6 col-lg-4 mb-3 ">
-                                            <label class="labelTitulo">Doctor:</label></br>
-                                            <input type="text" class="inputCaja" id="doctor" name="doctor"
-                                                value="">
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class=" col-12 col-sm-6  mb-3 ">
-                                            <label class="labelTitulo">Total:</label></br>
-                                            <input type="text" class="inputCaja" id="total" name="total"
-                                                value="0" readonly>
-                                        </div>
-
-                                        <div class=" col-12 col-sm-6  mb-3 ">
-                                            <label class="labelTitulo">Abono:</label></br>
-                                            <input type="text" class="inputCaja" id="abono" name="abono"
-                                                value="">
-                                        </div>
-                                    </div>
-                                </div>  --}}
-                                {{--  <div class="row ">
-                                    <div class=" col-12  mb-3 ">
-                                        <label class="labelTitulo">Maquila:</label></br>
-                                        <select class="form-select" id="maquila" name="maquila"
-                                            aria-label="Default select example">
-                                            <option selected>Seleccione</option>
-                                            <option value="1">Maquinaria 1</option>
-                                            <option value="2">Maquinaria 2</option>
-                                        </select>
-                                    </div>
-                                </div>  --}}
                                 <div class="row ">
                                     <label class="labelTitulo">Parametros:</label></br>
                                     <div class="col-12 " style=" display: contents;">
-                                        @forelse ($examen as $exame)
-                                            <div class=" col-12 col-sm-6  my-1">
-                                                <label>{{ $exame->nombre }} </label>
+                                        @forelse ($parametros as $parametro)
+                                            <div class=" col-12 col-sm-6  col-lg-4 my-1">
+                                                <input type="hidden" name="parametro[]" value={{ $parametro->id }}>
+                                                <label class="mb-3">{{ $parametro->nombre }} </label>
+                                                @if ($parametro->respuesta == 1)
+                                                    <input type="number" name="respuesta[]" id=""
+                                                        class="inputCaja" value="">
+                                                @elseif ($parametro->respuesta == 2)
+                                                    <input type="text" name="respuesta[]" id=""
+                                                        class="inputCaja" value="">
+                                                    {{--  @elseif ($parametro->respuesta == 3)
+                                                    <select name="{{ $campo->nombre }}" id="{{ $campo->nombre }}"
+                                                        class="form-control">
+                                                        <option value="positivo">Positivo</option>
+                                                        <option value="negativo">Negativo</option>
+                                                    </select>  --}}
+                                                @endif
                                             </div>
                                         @empty
                                             <label> No hay </label>
                                         @endforelse
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <label class="labelTitulo">Parametros:</label></br>
+                                    <div class="col-12 " style=" display: contents;">
+                                        <label class="mb-3">Notas: </label>
+
+                                        <input type="number" name="respuesta[]" id="" class="inputCaja"
+                                            value="">
+                                    </div>
+                                    <div class="col-12 " style=" display: contents;"></br>
+                                        <label class="mb-3">comentarios: </label>
+
+                                        <input type="number" name="respuesta[]" id="" class="inputCaja"
+                                            value="">
                                     </div>
                                 </div>
                         </div>
