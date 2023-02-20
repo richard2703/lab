@@ -22,7 +22,7 @@ class resultadosController extends Controller
             ->first();
 
         $examenes = tomas::join('examenes', 'tomas.examenes_id', 'examenes.id')
-            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus')
+            ->select('examenes.id', 'examenes.nombre', 'tomas.estatus', 'tomas.id as toma')
             ->paginate(10);
         // dd($ticket);
 
@@ -30,11 +30,6 @@ class resultadosController extends Controller
         return view('resultados.indexresultados', compact('ticket', 'examenes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request, $ticket)
     {
         $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
@@ -51,15 +46,22 @@ class resultadosController extends Controller
             ->where('examenparametro.examenes_id', $request->examen)
             ->get();
 
+        $examen->toma = $request->toma;
 
-        // dd($parametros);
+        // dd($request->toma);
         // MANDAR A VER LOS PARAMETROS Y LLENARLOS
         return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
     }
 
     public function store(Request $request)
     {
-        // dd(count($request->parametro));
+        // dd($request);
+        $toma = tomas::find($request->toma);
+        $toma->estatus = 1;
+        $toma->nota = $request->nota;
+        $toma->comentario = $request->comentario;
+        $toma->save();
+        // dd($toma);
         $c = count($request->parametro);
         for ($i = 0; $i < $c; $i++) {
             $resultado = new resultados();
@@ -72,26 +74,29 @@ class resultadosController extends Controller
         return redirect()->action([examenesController::class, 'index']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\resultados  $resultados
-     * @return \Illuminate\Http\Response
-     */
     public function show(resultados $resultados)
     {
         dd('show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\resultados  $resultados
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(resultados $resultados)
+    public function edit(Request $request, $ticket)
     {
-        dd('edit');
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'tickets.id', 'tickets.total', 'tickets.abono')
+            ->where('tickets.id', $ticket)
+            ->first();
+        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->where('examenes.id', $request->examen)
+            ->first();
+        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
+            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta')
+            ->where('examenparametro.examenes_id', $request->examen)
+            ->get();
+
+        $examen->toma = $request->toma;
+        return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
     }
 
     /**

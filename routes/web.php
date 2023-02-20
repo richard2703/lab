@@ -174,6 +174,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ticket/{ticket}/examenes', [App\Http\Controllers\resultadosController::class, 'index'])->name('resultados.index');
     Route::post('/ticket/{ticket}/resultados', [App\Http\Controllers\resultadosController::class, 'create'])->name('resultados.create');
     Route::post('/ticket/resultados', [App\Http\Controllers\resultadosController::class, 'store'])->name('resultados.store');
+    Route::post('/ticket/{ticket}/resultados/editar', [App\Http\Controllers\resultadosController::class, 'edit'])->name('resultados.edit');
+    Route::post('/ticket/resultados/update', [App\Http\Controllers\resultadosController::class, 'update'])->name('resultados.update');
 
     // Route::post('/accesorios', [App\Http\Controllers\accesoriosController::class, 'store'])->name('accesorios.store');
     // Route::get('/accesorios/{accesorios}', [App\Http\Controllers\accesoriosController::class, 'show'])->name('accesorios.show');

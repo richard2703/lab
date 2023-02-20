@@ -70,27 +70,30 @@
                                 </div>
 
                                 <div class="row ">
-                                    <label class="labelTitulo">Parametros:</label></br>
-                                    <div class="col-12 " style=" display: contents;">
-                                        <label class="mb-3">Notas: </label>
-
-                                        <input type="number" name="respuesta[]" id="" class="inputCaja"
-                                            value="">
+                                    <input type="hidden" name="toma" value="{{ $examen->toma }}">
+                                    </br>
+                                    <div class=" col-12 col-sm-6   my-1">
+                                        <label class="labelTitulo">Notas: </label>
+                                        <p>
+                                            <textarea class="inputCaja" name="nota" rows="5"cols="25" style="border-color: #5C7C26;"></textarea>
+                                        </p>
                                     </div>
-                                    <div class="col-12 " style=" display: contents;"></br>
-                                        <label class="mb-3">comentarios: </label>
-
-                                        <input type="number" name="respuesta[]" id="" class="inputCaja"
-                                            value="">
+                                    <div class=" col-12 col-sm-6   my-1">
+                                        <label class="labelTitulo">Comentarios:</label>
+                                        <p>
+                                            <textarea class="inputCaja" name="comentario" rows="5" cols="25" style="border-color: #5C7C26;"></textarea>
+                                        </p>
                                     </div>
+
                                 </div>
+                                <div class="col-12 text-end mb-3 "><br>
+                                    <button type="submit" class="btn botonGral" onclick="alertaGuardar()">Guardar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-end mb-3 ">
-                    <button type="submit" class="btn botonGral" onclick="alertaGuardar()">Guardar</button>
-                </div>
-                </form>
+
 
             </div>
         </div>

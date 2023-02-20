@@ -59,15 +59,33 @@
                                                                     <i class="bi bi-person-vcard  colorVolverGral"></i></a>
                                                             @endcan  --}}
                                                             @can('user_edit')
-                                                                <form action="{{ route('resultados.create', $ticket->id) }}"
-                                                                    method="POST" style="display: inline-block;">
-                                                                    @csrf
-                                                                    <input type="hidden" name="examen"
-                                                                        value="{{ $examene->id }}">
-                                                                    <button class="btnSinFondo" type="submit" rel="tooltip">
-                                                                        <i class="bi bi-pencil-fill"></i>
-                                                                    </button>
-                                                                </form>
+                                                                @if ($examene->estatus == 0)
+                                                                    <form action="{{ route('resultados.create', $ticket->id) }}"
+                                                                        method="POST" style="display: inline-block;">
+                                                                        @csrf
+                                                                        <input type="hidden" name="examen"
+                                                                            value="{{ $examene->id }}">
+                                                                        <input type="hidden" name="toma"
+                                                                            value="{{ $examene->toma }}">
+                                                                        <button class="btnSinFondo" type="submit"
+                                                                            rel="tooltip">
+                                                                            <i class="bi bi-pencil-fill"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                @elseif ($examene->estatus <= 1)
+                                                                    <form action="{{ route('resultados.edit', $ticket->id) }}"
+                                                                        method="POST" style="display: inline-block;">
+                                                                        @csrf
+                                                                        <input type="hidden" name="examen"
+                                                                            value="{{ $examene->id }}">
+                                                                        <input type="hidden" name="toma"
+                                                                            value="{{ $examene->toma }}">
+                                                                        <button class="btnSinFondo" type="submit"
+                                                                            rel="tooltip">
+                                                                            <i class="bi bi-person-vcard  colorVolverGral"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                @endif
                                                                 {{--  <a href="{{ route('resultados.edit', $examene->id) }}">
                                                                     <button class="botonSinFondo mx-2 " title="Editar"
                                                                         type="button">
