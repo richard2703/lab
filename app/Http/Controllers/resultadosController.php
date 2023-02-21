@@ -71,7 +71,7 @@ class resultadosController extends Controller
             $resultado->resultado = $request->respuesta[$i];
             $resultado->save();
         }
-        return redirect()->action([examenesController::class, 'index']);
+        return redirect()->action([resultadosController::class, 'index']);
     }
 
     public function show(resultados $resultados)
@@ -90,25 +90,34 @@ class resultadosController extends Controller
             ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
             ->where('examenes.id', $request->examen)
             ->first();
-        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id')
-            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta')
+        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
+            ->join('resultados', 'resultados.parametros_id', 'parametros.id')
+            ->select('parametros.id', 'parametros.nombre', 'parametros.respuesta', 'resultados.id as toma', 'resultados.resultado')
             ->where('examenparametro.examenes_id', $request->examen)
             ->get();
 
+        $toma = tomas::find($request->toma);
+        // dd($toma->estatus);
         $examen->toma = $request->toma;
-        return view('resultados.createresultados', compact('ticket', 'examen', 'parametros'));
+        return view('resultados.editresultados', compact('ticket', 'examen', 'parametros', 'toma'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\resultados  $resultados
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, resultados $resultados)
+    public function update(Request $request)
     {
-        dd('update');
+        // dd($request);
+        $toma = tomas::find($request->toma);
+        $toma->estatus = $request->estatus;
+        $toma->nota = $request->nota;
+        $toma->comentario = $request->comentario;
+        $toma->save();
+        dd($toma);
+        $c = count($request->parametro);
+        for ($i = 0; $i < $c; $i++) {
+            $resultado = resultados::find($request->parametro[$i]);
+            $resultado->resultado = $request->respuesta[$i];
+            $resultado->save();
+        }
+        return redirect()->action([resultadosController::class, 'index']);
     }
 
     /**

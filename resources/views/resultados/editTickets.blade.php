@@ -93,9 +93,11 @@
                                         <select class="form-select" id="maquila" name="maquila"
                                             aria-label="Default select example">
                                             <option selected>Seleccione</option>
-                                            <option value="1" {{ $ticket->maquila = 1 ? 'selected' : '' }}>Maquinaria 1
+                                            <option value="1" {{ $ticket->maquila == 1 ? 'selected' : '' }}>Maquinaria
+                                                1
                                             </option>
-                                            <option value="2" {{ $ticket->maquila = 2 ? 'selected' : '' }}>Maquinaria 2
+                                            <option value="2" {{ $ticket->maquila == 2 ? 'selected' : '' }}>Maquinaria
+                                                2
                                             </option>
                                         </select>
                                     </div>

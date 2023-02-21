@@ -72,7 +72,7 @@
                                                                             <i class="bi bi-pencil-fill"></i>
                                                                         </button>
                                                                     </form>
-                                                                @elseif ($examene->estatus <= 1)
+                                                                @elseif ($examene->estatus >= 1)
                                                                     <form action="{{ route('resultados.edit', $ticket->id) }}"
                                                                         method="POST" style="display: inline-block;">
                                                                         @csrf
