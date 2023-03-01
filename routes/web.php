@@ -176,6 +176,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ticket/resultados', [App\Http\Controllers\resultadosController::class, 'store'])->name('resultados.store');
     Route::post('/ticket/{ticket}/resultados/editar', [App\Http\Controllers\resultadosController::class, 'edit'])->name('resultados.edit');
     Route::post('/ticket/resultados/update', [App\Http\Controllers\resultadosController::class, 'update'])->name('resultados.update');
+    Route::get('/pdf', [App\Http\Controllers\resultadosController::class, 'pdf'])->name('resultados.pdf');
 
     // Route::post('/accesorios', [App\Http\Controllers\accesoriosController::class, 'store'])->name('accesorios.store');
     // Route::get('/accesorios/{accesorios}', [App\Http\Controllers\accesoriosController::class, 'show'])->name('accesorios.show');

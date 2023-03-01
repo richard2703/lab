@@ -4,6 +4,9 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+                <a href="{{ route('resultados.pdf') }}">
+                    <button class="btn botonGral">enviar</button>
+                </a>
 
                 {{-- <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">

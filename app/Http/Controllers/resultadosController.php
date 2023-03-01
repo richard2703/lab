@@ -7,9 +7,11 @@ use App\Models\tomas;
 use App\Models\tickets;
 use App\Models\examenes;
 use App\Models\parametros;
+use App\Models\pacientes;
 use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade;
 
 class resultadosController extends Controller
 {
@@ -129,5 +131,19 @@ class resultadosController extends Controller
     public function destroy(resultados $resultados)
     {
         dd('destroy');
+    }
+    public function pdf()
+    {
+        $pacientes = pacientes::all();
+        $data = [
+            'titulo' => 'Styde.net'
+        ];
+
+        return \PDF::loadView('resultados.pdftest', compact('pacientes'))
+            ->stream('archivo.pdf');;
+
+        // return view('resultados.pdftest', compact('pacientes'));
+
+        // dd($pacientes);
     }
 }
