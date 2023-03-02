@@ -179,6 +179,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         // Barryvdh\Debugbar\ServiceProvider::class,
 
+
     ],
 
     /*

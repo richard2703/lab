@@ -43,7 +43,7 @@
                                                 <th>ID</th>
                                                 <th>Examen</th>
                                                 <th>Estatus</th>
-                                                <th>Estatus</th>
+                                                <th>Descargar</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
@@ -51,8 +51,22 @@
                                                     <tr>
                                                         <td>{{ $examene->id }}</td>
                                                         <td>{{ $examene->nombre }}</td>
-                                                        <td>{{ $examene->estatus }}</td>
-                                                        <td>{{ $examene->alto }}</td>
+                                                        <td>
+                                                            @if ($examene->estatus == 0)
+                                                                En Espera
+                                                            @elseif ($examene->estatus == 1)
+                                                                En Revision
+                                                            @elseif ($examene->estatus == 2)
+                                                                Terminado
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($examene->estatus == 2)
+                                                                <a href="{{ route('resultados.pdf') }}">
+                                                                    <button class="btn botonGral">Descargar</button>
+                                                                </a>
+                                                            @endif
+                                                        </td>
                                                         <td class="td-actions text-right">
                                                             {{--  @can('user_show')
                                                                 <a href="{{ route('users.show', $parametro->id) }}">

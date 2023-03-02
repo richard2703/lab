@@ -11,7 +11,7 @@ use App\Models\pacientes;
 use App\Models\examenparametro;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade;
+use PDF;
 
 class resultadosController extends Controller
 {
@@ -139,8 +139,9 @@ class resultadosController extends Controller
             'titulo' => 'Styde.net'
         ];
 
-        return \PDF::loadView('resultados.pdftest', compact('pacientes'))
-            ->stream('archivo.pdf');;
+        return PDF::loadView('resultados.pdftest', compact('pacientes'))
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
 
         // return view('resultados.pdftest', compact('pacientes'));
 
