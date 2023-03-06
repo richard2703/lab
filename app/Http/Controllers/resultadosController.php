@@ -132,7 +132,50 @@ class resultadosController extends Controller
     {
         dd('destroy');
     }
-    public function pdf()
+    public function pdfResultado(Request $request)
+    {
+        $ticket = tickets::join('pacientes', 'tickets.paciente_id', 'pacientes.id')
+            ->select('pacientes.nombre', 'pacientes.apellido', 'pacientes.telefono', 'pacientes.nacimiento', 'tickets.id', 'tickets.total', 'tickets.abono', 'tickets.created_at', 'tickets.doctor')
+            ->where('tickets.id', $request->ticket)
+            ->first();
+        $examen = examenes::join('examenparametro', 'examenes.id', 'examenparametro.examenes_id')
+            ->join('parametros', 'parametros.id', 'examenparametro.parametros_id')
+            ->select('examenes.nombre', 'parametros.nombre', 'parametros.id')
+            ->where('examenes.id', $request->examen)
+            ->first();
+        $parametros = examenparametro::join('parametros', 'examenparametro.parametros_id', 'parametros.id',)
+            ->join('resultados', 'resultados.parametros_id', 'parametros.id')
+            ->select(
+                'parametros.id',
+                'parametros.nombre',
+                'parametros.respuesta',
+                'parametros.tipo',
+                'parametros.alto',
+                'parametros.bajo',
+                'parametros.medicion',
+                'parametros.escrito',
+                'parametros.referencia',
+                'parametros.respuesta',
+                'resultados.id as toma',
+                'resultados.resultado'
+            )
+            ->where('examenparametro.examenes_id', $request->examen)
+            ->get();
+        $toma = tomas::find($request->toma);
+        $examen->toma = $request->toma;
+
+        $pacientes = pacientes::all();
+        // $data = [
+        //     'titulo' => 'Styde.net'
+        // ];
+
+        // return view('resultados.pdfResultado', compact('ticket', 'examen', 'parametros', 'toma'));
+
+        return PDF::loadView('resultados.pdfResultado', compact('ticket', 'examen', 'parametros', 'toma'))
+            ->setPaper('a4')
+            ->stream('archivo.pdf');
+    }
+    public function pdftest()
     {
         $pacientes = pacientes::all();
         $data = [
@@ -141,6 +184,7 @@ class resultadosController extends Controller
 
         return PDF::loadView('resultados.pdftest', compact('pacientes'))
             ->setPaper('a4')
+            // ->setOptions(['defaultFont' => 'sans-serif'])
             ->stream('archivo.pdf');
 
         // return view('resultados.pdftest', compact('pacientes'));

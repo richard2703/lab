@@ -61,7 +61,7 @@ puede ser de altura y anchura completas.
     </header>
 
     <footer>
-        Copyright © <?php echo date('Y'); ?>
+        Copyright © {{ date('Y') }}
     </footer>
 
     <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->

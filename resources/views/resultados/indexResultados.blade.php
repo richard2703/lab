@@ -62,9 +62,19 @@
                                                         </td>
                                                         <td>
                                                             @if ($examene->estatus == 2)
-                                                                <a href="{{ route('resultados.pdf') }}">
-                                                                    <button class="btn botonGral">Descargar</button>
-                                                                </a>
+                                                                <form action="{{ route('resultados.pdf') }}" method="POST"
+                                                                    style="display: inline-block;" target="_blank">
+                                                                    @csrf
+                                                                    <input type="hidden" name="ticket"
+                                                                        value="{{ $ticket->id }}">
+                                                                    <input type="hidden" name="examen"
+                                                                        value="{{ $examene->id }}">
+                                                                    <input type="hidden" name="toma"
+                                                                        value="{{ $examene->toma }}">
+                                                                    <button class="btn botonGral" type="submit">Descargar
+                                                                    </button>
+
+                                                                </form>
                                                             @endif
                                                         </td>
                                                         <td class="td-actions text-right">
@@ -74,7 +84,8 @@
                                                             @endcan  --}}
                                                             @can('user_edit')
                                                                 @if ($examene->estatus == 0)
-                                                                    <form action="{{ route('resultados.create', $ticket->id) }}"
+                                                                    <form
+                                                                        action="{{ route('resultados.create', $ticket->id) }}"
                                                                         method="POST" style="display: inline-block;">
                                                                         @csrf
                                                                         <input type="hidden" name="examen"
@@ -176,13 +187,13 @@
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <label class="labelTitulo" for="">Bajo:</label></br>
-                                        <input class="inputCaja" type="number" step="0.01" min="0.01" id="bajo"
-                                            name="bajo" value="" required></br>
+                                        <input class="inputCaja" type="number" step="0.01" min="0.01"
+                                            id="bajo" name="bajo" value="" required></br>
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <label class="labelTitulo" for="">Alto:</label></br>
-                                        <input class="inputCaja" type="number" step="0.01" min="0.01" id="alto"
-                                            name="alto" value="" required></br>
+                                        <input class="inputCaja" type="number" step="0.01" min="0.01"
+                                            id="alto" name="alto" value="" required></br>
                                     </div>
 
                                 </div>

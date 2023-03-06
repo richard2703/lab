@@ -4,7 +4,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <a href="{{ route('resultados.pdf') }}">
+                <a href="{{ route('resultados.pdf') }}" target="_blank" rel="noopener noreferrer">
                     <button class="btn botonGral">enviar</button>
                 </a>
 
